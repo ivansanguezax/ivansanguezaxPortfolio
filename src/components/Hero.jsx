@@ -137,11 +137,11 @@ const Hero = () => {
         </form>
       </div>
       <div className="w-full md:w-4/12 flex justify-center items-center">
-        <img
-          src="https://res.cloudinary.com/dfgjenml4/image/upload/v1720311811/tip7xyfvup8bgtnvjopv.png"
-          alt="Hero"
-          className="w-full max-w-[250px] rounded-lg transform hover:scale-105 transition duration-300 animate-[float_6s_ease-in-out_infinite]"
-        />
+      <img
+      src="https://res.cloudinary.com/dfgjenml4/image/upload/v1720311811/tip7xyfvup8bgtnvjopv.png"
+      alt="Hero image of Ivan Sangueza, a software engineer, Notion ambassador, and UX designer"
+      className="w-full max-w-[250px] rounded-lg transform hover:scale-105 transition duration-300 animate-[float_6s_ease-in-out_infinite]"
+    />
       </div>
     </div>
   );

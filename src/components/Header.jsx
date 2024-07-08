@@ -178,7 +178,7 @@ const NavLink = ({ href, icon, text, onClick }) => (
 const MobileNavLink = ({ href, icon, text, onClick }) => (
   <button
     onClick={onClick}
-    className="text-gray-700 hover:bg-gray-100 hover:text-black block px-3 py-2 rounded-md text-base font-medium flex items-center"
+    className="text-gray-700 hover:bg-gray-100 hover:text-black  px-3 py-2 rounded-md text-base font-medium flex items-center"
   >
     {icon}
     <span className="ml-2">{text}</span>
