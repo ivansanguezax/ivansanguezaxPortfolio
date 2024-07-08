@@ -51,7 +51,7 @@ function App() {
       };
 
       preloadAllImages();
-    }, 1000); // Delay de 1 segundo antes de iniciar la precarga
+    });
 
     return () => clearTimeout(timer);
   }, []);
