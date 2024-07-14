@@ -10,7 +10,7 @@ Ivan Sangueza, a Software Engineer, stands out for his ability to tackle complex
 
 
 ---
-###🛠️ Built With
+### 🛠️ Built With
 
 - ![React](https://img.shields.io/badge/React-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB)
 - ![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=flat&logo=javascript&logoColor=black)
