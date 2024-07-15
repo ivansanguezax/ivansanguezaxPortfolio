@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import {
   Bars4Icon,
@@ -59,13 +60,13 @@ const Header = () => {
               </button>
             </div>
             <div className="flex-1 flex justify-center md:justify-start">
-              <a href="/" className="flex items-center">
-              <img
+              <Link to="/" className="flex items-center">
+                <img
                   src="https://res.cloudinary.com/dfgjenml4/image/upload/v1720371522/ct1tu7f3fmsyyuwfc7tg.png"
                   alt="Logo AI"
                   className="h-8 w-auto sm:h-10"
                 />
-              </a>
+              </Link>
             </div>
             <div className="hidden md:flex flex-1 justify-center">
               <div className="flex items-baseline space-x-4">
@@ -76,10 +77,9 @@ const Header = () => {
                   onClick={() => showToast('Articles')}
                 />
                 <NavLink
-                  href="#"
+                  to="/newsletter"
                   icon={<RssIcon className="h-5 w-5" />}
                   text="Newsletter"
-                  onClick={() => showToast('Newsletter')}
                 />
                 <NavLink
                   href="#"
@@ -130,10 +130,9 @@ const Header = () => {
                   onClick={() => showToast('Articles')}
                 />
                 <MobileNavLink
-                  href="#"
+                  to="/newsletter"
                   icon={<RssIcon className="h-5 w-5" />}
                   text="Newsletter"
-                  onClick={() => showToast('Newsletter')}
                 />
                 <MobileNavLink
                   href="#"
@@ -165,24 +164,50 @@ const Header = () => {
   );
 };
 
-const NavLink = ({ href, icon, text, onClick }) => (
-  <button
-    onClick={onClick}
-    className="text-gray-700 hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md text-sm font-medium flex items-center transition duration-150 ease-in-out"
-  >
-    {icon}
-    <span className="ml-2">{text}</span>
-  </button>
-);
+const NavLink = ({ to, href, icon, text, onClick }) => {
+  if (to) {
+    return (
+      <Link
+        to={to}
+        className="text-gray-700 hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md text-sm font-medium flex items-center transition duration-150 ease-in-out"
+      >
+        {icon}
+        <span className="ml-2">{text}</span>
+      </Link>
+    );
+  }
+  return (
+    <button
+      onClick={onClick}
+      className="text-gray-700 hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md text-sm font-medium flex items-center transition duration-150 ease-in-out"
+    >
+      {icon}
+      <span className="ml-2">{text}</span>
+    </button>
+  );
+};
 
-const MobileNavLink = ({ href, icon, text, onClick }) => (
-  <button
-    onClick={onClick}
-    className="text-gray-700 hover:bg-gray-100 hover:text-black  px-3 py-2 rounded-md text-base font-medium flex items-center"
-  >
-    {icon}
-    <span className="ml-2">{text}</span>
-  </button>
-);
+const MobileNavLink = ({ to, href, icon, text, onClick }) => {
+  if (to) {
+    return (
+      <Link
+        to={to}
+        className="text-gray-700 hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md text-base font-medium flex items-center"
+      >
+        {icon}
+        <span className="ml-2">{text}</span>
+      </Link>
+    );
+  }
+  return (
+    <button
+      onClick={onClick}
+      className="text-gray-700 hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md text-base font-medium flex items-center"
+    >
+      {icon}
+      <span className="ml-2">{text}</span>
+    </button>
+  );
+};
 
 export default Header;

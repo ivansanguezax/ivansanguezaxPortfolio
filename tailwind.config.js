@@ -13,7 +13,11 @@ export default {
       },
       colors: {
         'custom-bg': '#FFFEFC',
+        'custom-bgs': '#A66B37',
+        'custom-border': '#18191F',
+        'custom-yellow': '#F7B602',
       },
+      
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
@@ -30,5 +34,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }

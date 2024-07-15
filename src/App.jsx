@@ -6,6 +6,7 @@ import { CSSTransition } from "react-transition-group";
 import Home from "./pages/Home";
 import Articles from "./pages/Articles";
 import Newsletter from "./pages/Newsletter";
+import NewsletterDetail from "./pages/NewsletterDetail";
 import Tools from "./pages/Tools";
 import Podcast from "./pages/Podcast";
 
@@ -21,12 +22,12 @@ const imagesToPreload = [
 function preloadImage(src) {
   return new Promise((resolve, reject) => {
     const img = new Image();
-    img.onload = function() {
+    img.onload = function () {
       resolve(img);
-    }
-    img.onerror = img.onabort = function() {
+    };
+    img.onerror = img.onabort = function () {
       reject(src);
-    }
+    };
     img.src = src;
   });
 }
@@ -78,6 +79,10 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/articles" element={<Articles />} />
                     <Route path="/newsletter" element={<Newsletter />} />
+                    <Route
+                      path="/newsletter/:slug"
+                      element={<NewsletterDetail />}
+                    />
                     <Route path="/tools" element={<Tools />} />
                     <Route path="/podcast" element={<Podcast />} />
                   </Routes>
