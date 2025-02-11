@@ -47,6 +47,7 @@ logs
 # OS generated files
 Thumbs.db
 .DS_Store
+.vite
 
 # npm debugging logs
 npm-debug.log*

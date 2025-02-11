@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { FlipWords } from "./flip-words";
+import { FollowerPointerCard } from "./FollowingPointer";
+import { cn } from "../lib/utils";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -9,11 +12,18 @@ const Hero = () => {
   const [agreeToNewsletter, setAgreeToNewsletter] = useState(false);
   const [timeLeft, setTimeLeft] = useState(0);
 
+  const words = [
+    "Build solutions that matter",
+    "Design with purpose",
+    "Empower ideas into reality",
+    "Innovate with impact",
+  ];
+
   useEffect(() => {
     const lastSubscribeTime = localStorage.getItem("lastSubscribeTime");
     if (lastSubscribeTime) {
       const timeDiff = Date.now() - parseInt(lastSubscribeTime);
-      const waitTime = 5 * 60 * 1000; // 5 minutes
+      const waitTime = 5 * 60 * 1000;
       if (timeDiff < waitTime) {
         setCanSubscribe(false);
         setTimeLeft(Math.ceil((waitTime - timeDiff) / 1000));
@@ -88,21 +98,30 @@ const Hero = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center p-4 md:px-40 md:py-10 md:gap-10 h-full mt-20 md:mt-0">
-      <div className="w-full md:w-4/6 text-gray-800 mb-12 md:mb-0">
-        <h3 className="text-2xl mt-5 font-bold mb-4 animate-[fadeIn_2s_ease-out]">
+    <div className="flex flex-col md:flex-row items-center justify-center px-5 md:px-40 md:py-8 md:gap-10 min-h-screen pt-24 ">
+      <div className="w-full md:w-4/6 text-gray-800 mb-12 md:mb-0 flex flex-col items-center md:items-start">
+      <h3 className="text-2xl font-light  animate-[fadeIn_2s_ease-out] text-center md:text-left w-full mb-5">
           Hi, my name is Ivan Sangueza
         </h3>
-        <h1
-          className="text-6xl md:text-7xl font-bold mb-6 text-gray-900 animate-[fadeIn_2s_ease-out]"
-          style={{ fontFamily: '"Kanit", Arial, sans-serif' }}
-        >
-          Grow with passion
-        </h1>
-        <h3 className="text-xl md:text-2xl font-semibold mb-8 text-gray-700 animate-[fadeIn_2s_ease-out]">
-          I'm a Software Engineer, Notion Ambassador, and UX Designer
+        <div className="w-full relative min-h-[100px] flex items-center justify-center md:justify-start">
+          <div
+            className="w-full text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black animate-[fadeIn_2s_ease-out] text-center md:text-left absolute"
+            style={{ fontFamily: '"Kanit", Arial, sans-serif' }}
+          >
+            <FlipWords
+              words={words}
+              className="text-black text-center md:text-left"
+              duration={4000}
+            />
+          </div>
+        </div>
+        <h3 className="text-xl mt-5  md:text-2xl font-light mb-8 text-gray-700 animate-[fadeIn_2s_ease-out] text-center md:text-left w-full">
+          I'm a builder of ideas, leader of projects, and engineer of growth
         </h3>
-        <form onSubmit={handleSubmit} className="flex flex-col items-start">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col items-center md:items-start w-full max-w-xl"
+        >
           <div className="flex flex-col md:flex-row w-full mb-4">
             <div className="relative flex-grow mb-4 md:mb-0 md:mr-4">
               <EnvelopeIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -122,7 +141,7 @@ const Hero = () => {
               Subscribe
             </button>
           </div>
-          <div className="flex items-center mb-4">
+          <div className="flex items-center mb-4 text-center md:text-left">
             <input
               type="checkbox"
               id="agreeNewsletter"
@@ -137,12 +156,20 @@ const Hero = () => {
         </form>
       </div>
       <div className="w-full md:w-4/12 flex justify-center items-center">
+  <div className="w-full max-w-[250px]">
+    <FollowerPointerCard
+      title="Ivan Sangueza"
+      icon="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
+      className="aspect-[3/4] relative"
+    >
       <img
-      src="https://res.cloudinary.com/dfgjenml4/image/upload/v1720311811/tip7xyfvup8bgtnvjopv.png"
-      alt="Hero image of Ivan Sangueza, a software engineer, Notion ambassador, and UX designer"
-      className="w-full max-w-[250px] rounded-lg transform hover:scale-105 transition duration-300 animate-[float_6s_ease-in-out_infinite]"
-    />
-      </div>
+        src="https://res.cloudinary.com/dfgjenml4/image/upload/v1739043653/courses/neekcuirsporuzntsuid.png"
+        alt="Ivan Sangueza"
+        className="w-full h-full object-cover rounded-lg transform hover:scale-105 transition duration-300 animate-[float_6s_ease-in-out_infinite]"
+      />
+    </FollowerPointerCard>
+  </div>
+</div>
     </div>
   );
 };

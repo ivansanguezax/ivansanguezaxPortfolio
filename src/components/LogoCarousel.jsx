@@ -5,7 +5,6 @@ const logos = [
   { src: 'https://res.cloudinary.com/dfgjenml4/image/upload/v1720370865/sqpdgslq9pdmksccqszd.png', alt: 'Google Developer Groups' },
   { src: 'https://res.cloudinary.com/dfgjenml4/image/upload/v1720370873/nioyewooah5tzgsrlpkh.png', alt: 'Notion' },
   { src: 'https://res.cloudinary.com/dfgjenml4/image/upload/v1720370845/dqdgzw6ei4d6lqu2r5b3.png', alt: 'Sigma' },
-  { src: 'https://res.cloudinary.com/dfgjenml4/image/upload/v1720370856/kwcskaflmqbo922omhzy.png', alt: 'Guil' },
   { src: 'https://res.cloudinary.com/dfgjenml4/image/upload/v1720381257/btmc7hzjdvu8cet3adcs.png', alt: 'sgca' }
 ];
 

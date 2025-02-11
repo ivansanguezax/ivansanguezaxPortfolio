@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      transitionDuration: {
+        '400': '400ms',
+      },
       container: {
         center: true,
         padding: '1rem',
@@ -35,6 +38,5 @@ export default {
     },
   },
   plugins: [
-    require('@tailwindcss/line-clamp'),
   ],
 }
