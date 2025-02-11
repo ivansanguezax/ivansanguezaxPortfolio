@@ -8,7 +8,7 @@ const BlogHeader = ({ categories, activeCategory, onCategoryChange, onSortChange
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-2">Un café contigo</h1>
         <p className="text-lg text-gray-600">
-          Here, we share travel tips, destination guides, and stories that inspire your next adventure.
+        A space for real conversations, fresh ideas, and stories that flow as smoothly as your morning coffee.
         </p>
       </div>
 
