@@ -163,7 +163,7 @@ const Hero = () => {
       className="aspect-[3/4] relative"
     >
       <img
-        src="https://res.cloudinary.com/dfgjenml4/image/upload/v1739043653/courses/neekcuirsporuzntsuid.png"
+        src="https://res.cloudinary.com/dfgjenml4/image/upload/v1739334211/zqqkj0q3ti8npzli0sjg.png"
         alt="Ivan Sangueza"
         className="w-full h-full object-cover rounded-lg transform hover:scale-105 transition duration-300 animate-[float_6s_ease-in-out_infinite]"
       />
