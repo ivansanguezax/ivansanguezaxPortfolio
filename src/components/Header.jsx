@@ -69,7 +69,7 @@ const Header = () => {
   const navItems = [
     // { name: 'About me', path: '/about', icon: '👤', comingSoon: true },
     { name: 'Blog', path: '/blog', icon: '📝', comingSoon: false },
-    { name: 'Talks', path: '/talks', icon: '🎤', comingSoon: true }
+    { name: 'Talks', path: '/events', icon: '🎤', comingSoon: false } 
   ];
 
   const Clock = ({ time }) => (
@@ -255,7 +255,7 @@ const Header = () => {
 
               {/* Mobile Menu Button */}
               <button
-                className="md:hidden p-2"
+                className="md:hidden pr-2"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <svg 

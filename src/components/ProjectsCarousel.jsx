@@ -9,6 +9,27 @@ const CarouselContext = createContext({
 
 const data = [
   {
+    category: "AI & Payments",
+    title: "Payment secure",
+    src: "https://res.cloudinary.com/dfgjenml4/image/upload/v1739155977/jrdidpyhwwghvotlol6t.png",
+    content: (
+      <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
+        <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl  max-w-3xl mx-auto">
+          Seiff is a technology platform that redefines used car transactions between individuals in LATAM by ensuring secure payments, digital transfers, and a centralized buying and selling process
+        </p>
+        <iframe 
+          width="100%" 
+          height="400" 
+          src="https://www.youtube.com/embed/x8pvk3XdUuk?si=oxVVb_-26xILK8uu" 
+          title="YouTube video player" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowFullScreen 
+          className="mt-8 rounded-xl"
+        />
+      </div>
+    ),
+  },
+  {
     category: "AI & Web Development",
     title: "AI Summarizer",
     src: "https://res.cloudinary.com/dfgjenml4/image/upload/v1739156701/e8zmfs0c9r4zmemelt2b.png",
@@ -112,27 +133,7 @@ const data = [
       </div>
     ),
   },
-  {
-    category: "AI & Payments",
-    title: "Payment secure",
-    src: "https://res.cloudinary.com/dfgjenml4/image/upload/v1739155977/jrdidpyhwwghvotlol6t.png",
-    content: (
-      <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
-        <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl  max-w-3xl mx-auto">
-          Seiff is a technology platform that redefines used car transactions between individuals in LATAM by ensuring secure payments, digital transfers, and a centralized buying and selling process
-        </p>
-        <iframe 
-          width="100%" 
-          height="400" 
-          src="https://www.youtube.com/embed/yup-IewGpgc?si=L2KnQMtylNIL2XBy" 
-          title="YouTube video player" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          allowFullScreen 
-          className="mt-8 rounded-xl"
-        />
-      </div>
-    ),
-  },
+
 ];
 
 export const Card = ({ card, index, layout = false }) => {

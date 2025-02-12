@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Community = () => {
   const logos = [
@@ -54,14 +55,16 @@ const Community = () => {
             <p className="text-lg text-gray-600">
               Every talk is an opportunity to share, connect, and inspire action. It's about creating real impact through ideas and collaboration.
             </p>
-            <motion.button
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors shadow-lg"
-            >
-              See My Next Talk →
-            </motion.button>
+            <Link to="/events">
+              <motion.button
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-black text-white px-8 py-4 mt-5 rounded-lg font-semibold hover:bg-gray-800 transition-colors shadow-lg"
+              >
+                See My Next Talk →
+              </motion.button>
+            </Link>
           </motion.div>
 
           {/* Right Content */}
