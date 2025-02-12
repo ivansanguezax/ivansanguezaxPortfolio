@@ -88,14 +88,18 @@ export default function EventLayout() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl font-bold">
-              <span className="block text-gray-900">Próximos</span>
-              <span className="block text-blue-600">Eventos y Charlas</span>
-            </h1>
-            <p className="mt-3 text-gray-600 sm:text-lg max-w-2xl mx-auto">
-              Descubre y participa en nuestros eventos técnicos y charlas sobre tecnología.
-            </p>
-          </div>
+  <h1 className="text-4xl sm:text-5xl font-bold">
+    <span className="block text-gray-900">No Buzzwords, No Fluff</span>
+    <span className="block text-blue-600">Just Real Insights</span>
+  </h1>
+  <p className="mt-3 text-gray-600 sm:text-lg max-w-2xl mx-auto">
+    I talk about what actually works in startups, tech, and the tools that make life easier.  
+    No overhyped theories—just real, tested insights you can apply today.  
+  </p>
+  
+</div>
+
+
 
           {/* Filtros */}
           <div className="flex justify-center gap-2 mb-12 overflow-x-auto py-2">
