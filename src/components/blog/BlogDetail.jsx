@@ -20,14 +20,16 @@ const BlogDetail = () => {
   useEffect(() => {
     const loadBlogData = async () => {
       try {
-        const blogData = await getBlogBySlug(slug);
+        // Limpia el slug antes de hacer la petición
+        const cleanSlug = slug.trim();
+        const blogData = await getBlogBySlug(cleanSlug);
         setBlog(blogData);
         document.title = `${blogData.title} | Un Café Contigo`;
         
         // Cargar blogs relacionados
         const allBlogs = await getFeaturedBlogs();
         const filtered = allBlogs
-          .filter(b => b.slug !== slug)
+          .filter(b => b.slug.trim() !== cleanSlug)
           .slice(0, 2);
         setRelatedBlogs(filtered);
       } catch (error) {
@@ -37,15 +39,14 @@ const BlogDetail = () => {
         setLoading(false);
       }
     };
-
+  
     loadBlogData();
     window.scrollTo(0, 0);
-
+  
     return () => {
       document.title = 'Un Café Contigo | Blog';
     };
   }, [slug, navigate]);
-
   if (loading) {
     return (
       <div className="w-full min-h-screen bg-white">

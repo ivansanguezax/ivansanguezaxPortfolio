@@ -28,7 +28,8 @@ const BlogCard = ({ blog }) => {
   };
 
   const handleReadMore = () => {
-    navigate(`/blog/${blog.slug}`);
+    const cleanSlug = blog.slug.trim();
+    navigate(`/blog/${cleanSlug}`);
   };
 
   const imageVariants = {
