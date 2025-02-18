@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-Ivan Sangueza, a Software Engineer, stands out for his ability to tackle complex projects with technical skill and his passion for creating intuitive products. He has held prominent roles as CTO and founder. He is a passionate entrepreneur and also works as a UX Designer. Additionally, he is a Notion Ambassador and a community enthusiast in Bolivia, always willing to share his knowledge and experience.
+I'm Iván Sangueza, a Product Manager with a strong technical background in software engineering, growth strategy, and AI integration. I've led cross-functional teams across LATAM, the U.S., and Europe, managing product roadmaps, scaling products, and driving automation for impactful results. My journey includes raising $100K in pre-seed funding for Seiff, achieving a successful exit at Menti Academy, and optimizing growth funnels that improved user retention. Let’s build something great together.
 </p>
 
 
