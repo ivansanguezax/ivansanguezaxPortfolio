@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Timeline from "../components/aboutme/Timeline";
 import Skills from "../components/aboutme/Skills";
 import CTASection from '../components/aboutme/CTASection';
+import Footer from '../components/Footer';
 
 const AboutMe = () => {
   const containerVariants = {
@@ -82,6 +83,7 @@ const AboutMe = () => {
           <Timeline />
           <Skills />
           <CTASection />
+          <Footer />
         </motion.main>
       </div>
     </>
