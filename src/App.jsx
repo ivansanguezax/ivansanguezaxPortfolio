@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { 
-  BrowserRouter as Router, 
-  Route, 
+import {
+  BrowserRouter as Router,
+  Route,
   Routes,
-  UNSAFE_DataRouterStateContext, 
-  UNSAFE_NavigationContext
+  UNSAFE_DataRouterStateContext,
+  UNSAFE_NavigationContext,
 } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from "react-helmet-async";
 
 // Components
 import Home from "./pages/Home";
@@ -22,6 +22,7 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
+import NotFound from "./pages/NotFound";
 
 const imagesToPreload = [
   "https://res.cloudinary.com/dfgjenml4/image/upload/v1720311811/tip7xyfvup8bgtnvjopv.png",
@@ -31,16 +32,16 @@ const imagesToPreload = [
   "https://res.cloudinary.com/dfgjenml4/image/upload/v1720370845/dqdgzw6ei4d6lqu2r5b3.png",
   "https://res.cloudinary.com/dfgjenml4/image/upload/v1720370856/kwcskaflmqbo922omhzy.png",
   "https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png",
-  "https://res.cloudinary.com/dfgjenml4/image/upload/v1739823706/courses/pr0vvtpomybk2n7yt5ob.jpg"
+  "https://res.cloudinary.com/dfgjenml4/image/upload/v1739823706/courses/pr0vvtpomybk2n7yt5ob.jpg",
 ];
 
 function preloadImage(src) {
   return new Promise((resolve, reject) => {
     const img = new Image();
-    img.onload = function() {
+    img.onload = function () {
       resolve(img);
     };
-    img.onerror = img.onabort = function() {
+    img.onerror = img.onabort = function () {
       reject(src);
     };
     img.src = src;
@@ -60,13 +61,13 @@ function App() {
       return;
     }
 
-    const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
+    const minLoadingTime = new Promise((resolve) => setTimeout(resolve, 2000));
 
     const loadImages = async () => {
       try {
         await Promise.all([
           minLoadingTime,
-          ...imagesToPreload.map(preloadImage)
+          ...imagesToPreload.map(preloadImage),
         ]);
       } catch (error) {
         console.error("Error preloading images:", error);
@@ -100,7 +101,7 @@ function App() {
                 <Router
                   future={{
                     v7_startTransition: true,
-                    v7_relativeSplatPath: true
+                    v7_relativeSplatPath: true,
                   }}
                 >
                   <div className="relative">
@@ -111,6 +112,7 @@ function App() {
                       <Route path="/blog/:slug" element={<BlogDetail />} />
                       <Route path="/events" element={<EventsLayout />} />
                       <Route path="/events/:slug" element={<EventDetail />} />
+                      <Route path="*" element={<NotFound />} />
                     </Routes>
                   </div>
                 </Router>

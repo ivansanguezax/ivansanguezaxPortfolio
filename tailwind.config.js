@@ -22,6 +22,11 @@ export default {
       },
       
       keyframes: {
+        glow: {
+          '0%': { textShadow: '0 0 1rem #fefefe' },
+          '50%': { textShadow: '0 0 1.85rem #ededed' },
+          '100%': { textShadow: '0 0 1rem #fefefe' },
+        },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-20px)' },
@@ -34,6 +39,7 @@ export default {
       animation: {
         float: 'float 6s ease-in-out infinite',
         fadeIn: 'fadeIn 1s ease-out',
+        glow: 'glow 2s ease-in-out infinite',
       },
     },
   },
