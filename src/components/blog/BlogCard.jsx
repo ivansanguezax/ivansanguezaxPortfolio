@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBlogCard } from '../../context/BlogCardContext';
 import { useNavigate } from 'react-router-dom';
+import mixpanel from '../../utils/mixpanel';
 
 const BlogCard = ({ blog }) => {
   const cardRef = useRef(null);
@@ -28,9 +29,17 @@ const BlogCard = ({ blog }) => {
   };
 
   const handleReadMore = () => {
+    mixpanel.track('BlogClick', {
+      blog_title: blog.title,
+      blog_slug: blog.slug,
+      category: blog.category || 'Uncategorized',
+      source_page: window.location.pathname,
+    });
     const cleanSlug = blog.slug.trim();
     navigate(`/blog/${cleanSlug}`);
   };
+
+  
 
   const imageVariants = {
     collapsed: { 

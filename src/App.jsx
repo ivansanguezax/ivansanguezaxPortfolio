@@ -1,10 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { 
+  BrowserRouter as Router, 
+  Route, 
+  Routes,
+  UNSAFE_DataRouterStateContext, 
+  UNSAFE_NavigationContext
+} from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { HelmetProvider } from 'react-helmet-async';
 
 // Components
 import Home from "./pages/Home";
+import AboutMe from "./pages/AboutMe";
 import BlogLayout from "./pages/BlogLayout";
 import EventsLayout from "./pages/EventLayout";
 import EventDetail from "./components/events/EventDetail";
@@ -23,7 +30,8 @@ const imagesToPreload = [
   "https://res.cloudinary.com/dfgjenml4/image/upload/v1720370873/nioyewooah5tzgsrlpkh.png",
   "https://res.cloudinary.com/dfgjenml4/image/upload/v1720370845/dqdgzw6ei4d6lqu2r5b3.png",
   "https://res.cloudinary.com/dfgjenml4/image/upload/v1720370856/kwcskaflmqbo922omhzy.png",
-  "https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
+  "https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png",
+  "https://res.cloudinary.com/dfgjenml4/image/upload/v1739823706/courses/pr0vvtpomybk2n7yt5ob.jpg"
 ];
 
 function preloadImage(src) {
@@ -52,7 +60,6 @@ function App() {
       return;
     }
 
-    // Aseguramos un tiempo mínimo de 2 segundos para el loading
     const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
 
     const loadImages = async () => {
@@ -75,30 +82,42 @@ function App() {
 
   return (
     <HelmetProvider>
-      <div className="min-h-screen bg-white">
-        {loading ? (
-          <LoadingSpinner />
-        ) : (
-          <CSSTransition
-            in={showContent}
-            timeout={300}
-            classNames="fade"
-            unmountOnExit
-            nodeRef={nodeRef}
-          >
-            <div ref={nodeRef}>
-              <Router>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/blog" element={<BlogLayout />} />
-                  <Route path="/blog/:slug" element={<BlogDetail />} />
-                  <Route path="/events" element={<EventsLayout />} />
-                  <Route path="/events/:slug" element={<EventDetail />} />
-                </Routes>
-              </Router>
+      <div className="relative min-h-screen bg-white overflow-x-hidden">
+        <div className="relative w-full h-full">
+          {loading ? (
+            <div className="relative">
+              <LoadingSpinner />
             </div>
-          </CSSTransition>
-        )}
+          ) : (
+            <CSSTransition
+              in={showContent}
+              timeout={300}
+              classNames="fade"
+              unmountOnExit
+              nodeRef={nodeRef}
+            >
+              <div ref={nodeRef} className="relative">
+                <Router
+                  future={{
+                    v7_startTransition: true,
+                    v7_relativeSplatPath: true
+                  }}
+                >
+                  <div className="relative">
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/about" element={<AboutMe />} />
+                      <Route path="/blog" element={<BlogLayout />} />
+                      <Route path="/blog/:slug" element={<BlogDetail />} />
+                      <Route path="/events" element={<EventsLayout />} />
+                      <Route path="/events/:slug" element={<EventDetail />} />
+                    </Routes>
+                  </div>
+                </Router>
+              </div>
+            </CSSTransition>
+          )}
+        </div>
       </div>
     </HelmetProvider>
   );

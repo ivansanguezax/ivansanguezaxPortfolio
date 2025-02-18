@@ -8,7 +8,8 @@ import { Chip } from 'primereact/chip';
 import NotionRenderer from './NotionRenderer';
 import { BlogCardProvider } from '../../context/BlogCardContext';
 import { ArrowLeft } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+import mixpanel from '../../utils/mixpanel';
 
 const BlogDetail = () => {
   const { slug } = useParams();
@@ -20,17 +21,21 @@ const BlogDetail = () => {
   useEffect(() => {
     const loadBlogData = async () => {
       try {
-        // Limpia el slug antes de hacer la petición
         const cleanSlug = slug.trim();
         const blogData = await getBlogBySlug(cleanSlug);
         setBlog(blogData);
-        document.title = `${blogData.title} | Un Café Contigo`;
-        
-        // Cargar blogs relacionados
+  
+        mixpanel.track('BlogView', {
+          blog_title: blogData.title,
+          blog_slug: cleanSlug,
+          author: blogData.author,
+          category: blogData.category || 'Uncategorized',
+          referrer: document.referrer,
+          device_type: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop'
+        });
+  
         const allBlogs = await getFeaturedBlogs();
-        const filtered = allBlogs
-          .filter(b => b.slug.trim() !== cleanSlug)
-          .slice(0, 2);
+        const filtered = allBlogs.filter(b => b.slug.trim() !== cleanSlug).slice(0, 2);
         setRelatedBlogs(filtered);
       } catch (error) {
         console.error('Error loading blog:', error);
@@ -39,14 +44,40 @@ const BlogDetail = () => {
         setLoading(false);
       }
     };
-  
     loadBlogData();
     window.scrollTo(0, 0);
-  
-    return () => {
-      document.title = 'Un Café Contigo | Blog';
-    };
   }, [slug, navigate]);
+
+  useEffect(() => {
+    let startTime = Date.now();
+  
+    const logTimeSpent = () => {
+      if (!blog) return; 
+      const timeSpent = ((Date.now() - startTime) / 1000).toFixed(2); // tiempo en segundos
+      mixpanel.track('TimeSpent', {
+        blog_title: blog.title,
+        blog_slug: slug,
+        time_spent: timeSpent,
+        device_type: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+        scroll_depth: getScrollDepth()
+      });
+    };
+    
+  
+    const getScrollDepth = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      return docHeight > 0 ? ((scrollTop / docHeight) * 100).toFixed(2) + '%' : '100%';
+    };
+  
+    window.addEventListener('beforeunload', logTimeSpent);
+    return () => {
+      logTimeSpent();
+      window.removeEventListener('beforeunload', logTimeSpent);
+    };
+  }, [slug, blog]);
+  
+
   if (loading) {
     return (
       <div className="w-full min-h-screen bg-white">
@@ -75,110 +106,109 @@ const BlogDetail = () => {
     });
   };
 
+  // Construct the full URL for the blog
+  const fullUrl = `${window.location.origin}/blog/${slug}`;
+
   return (
-    <div className="min-h-screen bg-white">
-      <Helmet>
-        {/* Títulos y Descripciones Básicas */}
-        <title>{`${blog.title} | Un Café Contigo`}</title>
-        <meta name="description" content={blog.content} />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={blog.title} />
-        <meta property="og:description" content={blog.content} />
-        <meta property="og:image" content={blog.bannerImage} />
-        <meta property="og:url" content={window.location.href} />
-        <meta property="og:site_name" content="Un Café Contigo" />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={blog.title} />
-        <meta name="twitter:description" content={blog.content} />
-        <meta name="twitter:image" content={blog.bannerImage} />
-        
-        {/* Metadatos del Artículo */}
-        <meta property="article:published_time" content={blog.publicationDate} />
-        <meta property="article:author" content={blog.author} />
-        {blog.category.map((cat, index) => (
-          <meta key={index} property="article:tag" content={cat} />
-        ))}
-        
-        {/* Canonical URL */}
-        <link rel="canonical" href={window.location.href} />
-      </Helmet>
+    <HelmetProvider>
+      <div className="min-h-screen bg-white">
+        <Helmet>
+          <title>{`${blog.title} | Un Café Contigo`}</title>
+          <meta name="description" content={blog.content} />
+          
+          {/* Open Graph / Facebook */}
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={blog.title} />
+          <meta property="og:description" content={blog.content} />
+          <meta property="og:image" content={blog.bannerImage} />
+          <meta property="og:url" content={fullUrl} />
+          <meta property="og:site_name" content="Un Café Contigo" />
+          
+          {/* Twitter */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={blog.title} />
+          <meta name="twitter:description" content={blog.content} />
+          <meta name="twitter:image" content={blog.bannerImage} />
+          
+          {/* Metadatos del Artículo */}
+          <meta property="article:published_time" content={blog.publicationDate} />
+          <meta property="article:author" content={blog.author} />
+          {blog.category && blog.category.map((cat, index) => (
+            <meta key={index} property="article:tag" content={cat} />
+          ))}
+          
+          {/* Canonical URL */}
+          <link rel="canonical" href={fullUrl} />
+        </Helmet>
 
-      <Header />
-      
-      <main className="pt-32">
-        {/* Contenedor principal con padding consistente */}
-        <div className="max-w-4xl mx-auto px-4">
-          {/* Botón Regresar */}
-          <button
-            onClick={() => navigate('/blog')}
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-6"
-          >
-            <ArrowLeft size={20} />
-            <span>Regresar al blog</span>
-          </button>
+        <Header />
+        
+        <main className="pt-32">
+          <div className="max-w-4xl mx-auto px-4">
+            <button
+              onClick={() => navigate('/blog')}
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-6"
+            >
+              <ArrowLeft size={20} />
+              <span>Regresar al blog</span>
+            </button>
 
-          {/* Header del blog */}
-          <header className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              {blog.title}
-            </h1>
-            
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-3">
-                <img
-                  src="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
-                  alt={blog.author}
-                  className="w-auto h-12"
-                />
-                <div>
-                  <p className="font-medium text-gray-900">{blog.author}</p>
-                  <p className="text-sm text-gray-500">
-                    {formatDate(blog.publicationDate)}
-                  </p>
-                </div>
-              </div>
+            <header className="mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                {blog.title}
+              </h1>
               
-              <div className="flex gap-2">
-                {blog.category.map((cat, index) => (
-                  <Chip
-                    key={index}
-                    label={cat}
-                    className="bg-blue-100 text-blue-800"
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-3">
+                  <img
+                    src="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
+                    alt={blog.author}
+                    className="w-auto h-12"
                   />
-                ))}
-              </div>
-            </div>
-          </header>
-
-          {/* Contenido del blog */}
-          <article className="prose prose-lg prose-gray max-w-none">
-            <NotionRenderer data={blog} />
-          </article>
-
-          {/* Blogs relacionados - Alineado con el contenido */}
-          {relatedBlogs.length > 0 && (
-            <section className="py-16">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">
-                Seguir leyendo
-              </h2>
-              <BlogCardProvider>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {relatedBlogs.map(blog => (
-                    <BlogCard key={blog.id} blog={blog} />
+                  <div>
+                    <p className="font-medium text-gray-900">{blog.author}</p>
+                    <p className="text-sm text-gray-500">
+                      {formatDate(blog.publicationDate)}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-2">
+                  {blog.category && blog.category.map((cat, index) => (
+                    <Chip
+                      key={index}
+                      label={cat}
+                      className="bg-blue-100 text-blue-800"
+                    />
                   ))}
                 </div>
-              </BlogCardProvider>
-            </section>
-          )}
-        </div>
-      </main>
-      
-      <Footer />
-    </div>
+              </div>
+            </header>
+
+            <article className="prose prose-lg prose-gray max-w-none">
+              <NotionRenderer data={blog} />
+            </article>
+
+            {relatedBlogs.length > 0 && (
+              <section className="py-16">
+                <h2 className="text-2xl font-bold text-gray-900 mb-8">
+                  Seguir leyendo
+                </h2>
+                <BlogCardProvider>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {relatedBlogs.map(blog => (
+                      <BlogCard key={blog.id} blog={blog} />
+                    ))}
+                  </div>
+                </BlogCardProvider>
+              </section>
+            )}
+          </div>
+        </main>
+        
+        <Footer />
+      </div>
+    </HelmetProvider>
   );
 };
 

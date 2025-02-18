@@ -23,8 +23,31 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredNav, setHoveredNav] = useState(null);
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
   const location = useLocation();
   const { scrollY } = useScroll();
+
+  useEffect(() => {
+    // Verificar si es la primera visita
+    const hasVisited = localStorage.getItem('hasVisited');
+    setIsFirstVisit(!hasVisited);
+    
+    // Marcar como visitado
+    if (!hasVisited) {
+      localStorage.setItem('hasVisited', 'true');
+    }
+
+    // Limpiar el localStorage cuando el usuario cierra la pestaña o navegador
+    const handleTabClose = () => {
+      localStorage.removeItem('hasVisited');
+    };
+
+    window.addEventListener('beforeunload', handleTabClose);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleTabClose);
+    };
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -49,13 +72,13 @@ const Header = () => {
   }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (window.innerWidth >= 768) { // Only add delay for desktop
+    if (window.innerWidth >= 768) {
       const timeoutId = setTimeout(() => {
         setIsScrolled(latest > 50);
       }, 200);
       return () => clearTimeout(timeoutId);
     } else {
-      setIsScrolled(latest > 50); // Immediate for mobile
+      setIsScrolled(latest > 50);
     }
   });
 
@@ -67,10 +90,17 @@ const Header = () => {
   };
 
   const navItems = [
-    // { name: 'About me', path: '/about', icon: '👤', comingSoon: true },
-    { name: 'Blog', path: '/blog', icon: '📝', comingSoon: false },
-    { name: 'Talks', path: '/events', icon: '🎤', comingSoon: false } 
+    { id: 'blog', name: 'Blog', path: '/blog', icon: '📝', comingSoon: false },
+    { id: 'about me', name: 'About me', path: '/about', icon: '✍️', comingSoon: false },
+    { id: 'talks', name: 'Talks', path: '/events', icon: '🎤', comingSoon: false }
   ];
+
+  const isActiveRoute = (path) => {
+    if (path === '/blog') {
+      return location.pathname === path || location.pathname.startsWith(`${path}/`);
+    }
+    return location.pathname === path;
+  };
 
   const Clock = ({ time }) => (
     <div className='flex items-center gap-0.5 font-mono'>
@@ -86,6 +116,7 @@ const Header = () => {
     if (item.comingSoon) {
       return (
         <button
+          key={item.id}
           onClick={handleComingSoon}
           className={`px-4 py-2 rounded-lg transition-all duration-300 w-28 text-center hover:border-black hover:border`}
           onMouseEnter={() => setHoveredNav(item.path)}
@@ -107,9 +138,10 @@ const Header = () => {
 
     return (
       <Link
+        key={item.id}
         to={item.path}
         className={`px-4 py-2 rounded-lg transition-all duration-300 w-28 text-center ${
-          location.pathname === item.path
+          isActiveRoute(item.path)
             ? 'bg-custom-border text-white'
             : 'hover:border-black hover:border'
         }`}
@@ -133,8 +165,8 @@ const Header = () => {
   return (
     <>
       <motion.header 
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={isFirstVisit ? { y: -20, opacity: 0 } : false}
+        animate={isFirstVisit ? { y: 0, opacity: 1 } : false}
         transition={{ ease: "easeInOut", duration: 0.6 }}
         className={`fixed w-full z-50 transition-all duration-300 ${
           isScrolled 
@@ -146,12 +178,11 @@ const Header = () => {
           {isScrolled ? (
             <motion.div 
               className="bg-white shadow-lg rounded-full px-4 sm:px-6 py-3 flex items-center justify-between"
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
+              initial={isFirstVisit ? { y: -20, opacity: 0 } : false}
+              animate={isFirstVisit ? { y: 0, opacity: 1 } : false}
               transition={{ duration: 0.3 }}
             >
               <div className="flex items-center justify-between w-full md:w-auto">
-                {/* Logo en mobile y scroll */}
                 <div className="md:hidden flex items-center justify-between w-full">
                   <Link to="/" className="flex-1 flex justify-center">
                     <img 
@@ -181,13 +212,11 @@ const Header = () => {
                   </button>
                 </div>
                 
-                {/* Menu items en desktop y scroll */}
                 <div className="hidden md:flex items-center space-x-4">
                   {navItems.map((item) => renderNavLink(item))}
                 </div>
               </div>
 
-              {/* Botón Let's Connect en desktop y scroll */}
               <div className="hidden md:block">
                 <HoverBorderGradient
                   as="a"
@@ -204,9 +233,7 @@ const Header = () => {
             </motion.div>
           ) : (
             <div className="flex items-center justify-between">
-              {/* Logo and Navigation Group */}
               <div className="flex items-center xl:space-x-8 md:space-x-4 flex-1 justify-center md:justify-start">
-                {/* Logo */}
                 <Link to="/" className="flex-shrink-0">
                   <img 
                     src="https://res.cloudinary.com/dfgjenml4/image/upload/v1720371522/ct1tu7f3fmsyyuwfc7tg.png"
@@ -215,13 +242,11 @@ const Header = () => {
                   />
                 </Link>
 
-                {/* Desktop Navigation Items */}
-                <div className="hidden  md:flex items-center  xl:space-x-6  md:space-x-2 ">
+                <div className="hidden md:flex items-center xl:space-x-6 md:space-x-2">
                   {navItems.map((item) => renderNavLink(item))}
                 </div>
               </div>
 
-              {/* Time and Button Group */}
               <div className="hidden md:flex items-center space-x-8">
                 <div className="hidden lg:flex space-x-8">
                   <div className="text-center">
@@ -253,7 +278,6 @@ const Header = () => {
                 </HoverBorderGradient>
               </div>
 
-              {/* Mobile Menu Button */}
               <button
                 className="md:hidden pr-2"
                 onClick={() => setIsOpen(!isOpen)}
@@ -277,7 +301,6 @@ const Header = () => {
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -295,7 +318,7 @@ const Header = () => {
                 {navItems.map((item) => (
                   item.comingSoon ? (
                     <button
-                      key={item.path}
+                      key={item.id}
                       onClick={() => {
                         handleComingSoon();
                         setIsOpen(false);
@@ -307,9 +330,11 @@ const Header = () => {
                     </button>
                   ) : (
                     <Link
-                      key={item.path}
+                      key={item.id}
                       to={item.path}
-                      className="flex items-center space-x-2 py-3 px-4 hover:bg-gray-100 rounded-xl"
+                      className={`flex items-center space-x-2 py-3 px-4 hover:bg-gray-100 rounded-xl ${
+                        isActiveRoute(item.path) ? 'bg-custom-border text-white' : ''
+                      }`}
                       onClick={() => setIsOpen(false)}
                     >
                       <span>{item.icon}</span>

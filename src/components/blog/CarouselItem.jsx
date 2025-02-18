@@ -57,7 +57,7 @@ const CarouselItem = ({ blog }) => {
             <img
               src="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
               alt="Autor"
-              className="w-12 h-12 rounded-full"
+              className="w-auto h-12 "
               loading="lazy"
             />
             <div>
