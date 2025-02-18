@@ -40,14 +40,14 @@ const AboutMe = () => {
         />
       </Helmet>
 
-      <div className="min-h-screen bg-custom-bg">
+      <div className="min-h-screen bg-gray-100">
         <Header />
 
         <motion.main
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="pt-32 pb-16 relative" // Añadido relative aquí
+          className="pt-32 relative" // Añadido relative aquí
           style={{ position: 'relative' }} // Aseguramos la posición relativa
         >
           <motion.section 
