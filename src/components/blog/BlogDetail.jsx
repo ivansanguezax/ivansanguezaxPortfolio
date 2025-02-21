@@ -77,6 +77,11 @@ const BlogDetail = () => {
     };
   }, [slug, blog]);
   
+  useEffect(() => {
+    console.log("Helmet rendered:", document.title);
+  }, []);
+  
+  
 
   if (loading) {
     return (

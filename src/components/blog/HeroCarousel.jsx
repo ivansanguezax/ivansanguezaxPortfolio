@@ -19,7 +19,8 @@ const HeroCarousel = () => {
       try {
         const data = await getFeaturedBlogs();
         if (data && Array.isArray(data)) {
-          setBlogs(data);
+          // Tomamos solo los primeros 4 blogs
+          setBlogs(data.slice(0, 4));
         } else {
           setError('Invalid data format');
         }
@@ -62,7 +63,12 @@ const HeroCarousel = () => {
 
   return (
     <div className="relative w-full">
-      <Carousel opts={{ loop: true }}>
+      <Carousel opts={{ 
+        loop: true,
+        align: "start",
+        autoplay: true,
+        interval: 5000 // 5 segundos entre cada slide
+      }}>
         <CarouselContent>
           {blogs.map((blog) => (
             <CarouselSlide key={blog.id}>

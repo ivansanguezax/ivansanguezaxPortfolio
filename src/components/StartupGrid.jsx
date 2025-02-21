@@ -46,11 +46,11 @@ const StartupGrid = () => {
           {/* Title Section with slide-in animation */}
           <div className={`md:w-1/3 mb-8 md:mb-0 text-center md:text-left transform transition-all duration-1000 ease-out
             ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}>
-            <h2 className="text-2xl md:text-3xl font-light leading-tight text-emerald-800">
-              +4 Years Leading 
-              <br />
-              Successful Startups
-            </h2>
+<h2 className="text-2xl md:text-3xl font-light leading-tight text-emerald-800">
+  +4 Years Leading 
+  <br />
+  Successful Startups
+</h2>
           </div>
 
           {/* Logos Grid with fade-in animation */}

@@ -1,4 +1,3 @@
-// src/components/blog/BlogCard.jsx
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useBlogCard } from '../../context/BlogCardContext';
@@ -39,7 +38,10 @@ const BlogCard = ({ blog }) => {
     navigate(`/blog/${cleanSlug}`);
   };
 
-  
+  const truncateText = (text, maxLength) => {
+    if (text.length <= maxLength) return text;
+    return text.substr(0, maxLength).trim() + '...';
+  };
 
   const imageVariants = {
     collapsed: { 
@@ -88,29 +90,40 @@ const BlogCard = ({ blog }) => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute bottom-0 left-0 right-0 rounded-xl bg-zinc-900/95 px-4 pt-2"
+            className="absolute bottom-0 left-0 right-0 rounded-xl bg-zinc-900/95 px-4 pt-3"
             initial="collapsed"
             animate="expanded"
             exit="collapsed"
             variants={contentVariants}
           >
-            <button
-              className="w-full pb-2 text-left text-[16px] font-medium text-white line-clamp-1"
-              onClick={handleToggle}
+            <h3
+              className="mb-2 text-[16px] font-semibold text-white overflow-hidden text-ellipsis"
+              style={{
+                display: '-webkit-box',
+                WebkitLineClamp: '2',
+                WebkitBoxOrient: 'vertical'
+              }}
             >
-              {blog.title}
-            </button>
+              {truncateText(blog.title, 80)}
+            </h3>
             <div className="flex flex-col pb-4 text-[14px] text-zinc-300">
-              <p className="line-clamp-3 mb-4">
-                {blog.content}
+              <p 
+                className="mb-4 overflow-hidden text-ellipsis"
+                style={{
+                  display: '-webkit-box',
+                  WebkitLineClamp: '3',
+                  WebkitBoxOrient: 'vertical'
+                }}
+              >
+                {truncateText(blog.content, 150)}
               </p>
               <button
-  onClick={handleReadMore}
-  className="mt-auto w-full rounded-[4px] border border-zinc-700 bg-zinc-800 px-4 py-2 text-zinc-50 transition-colors duration-300 hover:bg-zinc-700"
-  type="button"
->
-  Discover More
-</button>
+                onClick={handleReadMore}
+                className="mt-auto w-full rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-2.5 text-white font-medium shadow-lg transition-all duration-300 hover:from-blue-600 hover:to-blue-700 hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                type="button"
+              >
+                Read Full Article →
+              </button>
             </div>
           </motion.div>
         )}

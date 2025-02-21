@@ -164,24 +164,24 @@ const Header = () => {
 
   return (
     <>
-      <motion.header 
-        initial={isFirstVisit ? { y: -20, opacity: 0 } : false}
-        animate={isFirstVisit ? { y: 0, opacity: 1 } : false}
-        transition={{ ease: "easeInOut", duration: 0.6 }}
-        className={`fixed w-full z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'mt-4' 
-            : 'bg-custom-bg py-4'
-        }`}
-      >
+<motion.header 
+  initial={false} // Removemos la animación por defecto
+  animate={isFirstVisit ? { y: 0, opacity: 1 } : {}} // Solo anima si es primera visita
+  transition={{ ease: "easeInOut", duration: 0.6 }}
+  className={`fixed w-full z-50 transition-all duration-300 ${
+    isScrolled 
+      ? 'mt-4' 
+      : 'bg-custom-bg py-4'
+  }`}
+>
         <div className={`container mx-auto px-4 sm:px-6 lg:px-10 ${isScrolled ? 'max-w-3xl' : ''}`}>
           {isScrolled ? (
             <motion.div 
-              className="bg-white shadow-lg rounded-full px-4 sm:px-6 py-3 flex items-center justify-between"
-              initial={isFirstVisit ? { y: -20, opacity: 0 } : false}
-              animate={isFirstVisit ? { y: 0, opacity: 1 } : false}
-              transition={{ duration: 0.3 }}
-            >
+  className="bg-white shadow-lg rounded-full px-4 sm:px-6 py-3 flex items-center justify-between"
+  initial={false} // Removemos la animación por defecto
+  animate={isFirstVisit ? { y: 0, opacity: 1 } : {}} // Solo anima si es primera visita
+  transition={{ duration: 0.3 }}
+>
               <div className="flex items-center justify-between w-full md:w-auto">
                 <div className="md:hidden flex items-center justify-between w-full">
                   <Link to="/" className="flex-1 flex justify-center">

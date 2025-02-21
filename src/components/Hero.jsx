@@ -15,9 +15,9 @@ const Hero = () => {
     <div className="flex flex-col md:flex-row items-center justify-center px-5 md:px-40 md:py-8 md:gap-10 min-h-screen pt-24">
       {/* Left Section */}
       <div className="w-full md:w-4/6 text-gray-800 mb-12 md:mb-0 flex flex-col items-center md:items-start">
-        <h3 className="text-2xl font-light animate-[fadeIn_2s_ease-out] text-center md:text-left w-full mb-5">
+        <h1 className="text-2xl font-light animate-[fadeIn_2s_ease-out] text-center md:text-left w-full mb-5">
           Hi, my name is Ivan Sangueza
-        </h3>
+        </h1>
         <div className="w-full relative min-h-[100px] flex items-center justify-center md:justify-start">
           <div
             className="w-full text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-black animate-[fadeIn_2s_ease-out] text-center md:text-left absolute"
@@ -30,13 +30,15 @@ const Hero = () => {
             />
           </div>
         </div>
-        <h3 className="text-xl mt-5 md:text-2xl font-light mb-8 text-gray-700 animate-[fadeIn_2s_ease-out] text-center md:text-left w-full">
+        <h2 className="text-xl mt-5 md:text-2xl font-light mb-8 text-gray-700 animate-[fadeIn_2s_ease-out] text-center md:text-left w-full">
           I'm a builder of ideas, leader of projects, and engineer of growth
-        </h3>
+        </h2>
 
         {/* Redes Sociales */}
         <div className="flex flex-col md:items-start items-center w-full">
-          <h4 className="text-lg font-semibold text-gray-800 mb-4">Let’s connect</h4>
+          <h3 className="text-lg font-semibold text-gray-800 mb-4">
+            Let's connect
+          </h3>
           <div className="flex space-x-4 md:justify-start justify-center">
             <a
               href="https://www.instagram.com/ivansanguezax/"
