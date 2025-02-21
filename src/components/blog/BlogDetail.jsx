@@ -117,35 +117,33 @@ const BlogDetail = () => {
   return (
     <HelmetProvider>
       <div className="min-h-screen bg-white">
-        <Helmet>
-          <title>{`${blog.title} | Un Café Contigo`}</title>
-          <meta name="description" content={blog.content} />
-          
-          {/* Open Graph / Facebook */}
-          <meta property="og:type" content="article" />
-          <meta property="og:title" content={blog.title} />
-          <meta property="og:description" content={blog.content} />
-          <meta property="og:image" content={blog.bannerImage} />
-          <meta property="og:url" content={fullUrl} />
-          <meta property="og:site_name" content="Un Café Contigo" />
-          
-          {/* Twitter */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={blog.title} />
-          <meta name="twitter:description" content={blog.content} />
-          <meta name="twitter:image" content={blog.bannerImage} />
-          
-          {/* Metadatos del Artículo */}
-          <meta property="article:published_time" content={blog.publicationDate} />
-          <meta property="article:author" content={blog.author} />
-          {blog.category && blog.category.map((cat, index) => (
-            <meta key={index} property="article:tag" content={cat} />
-          ))}
-          
-          {/* Canonical URL */}
-          <link rel="canonical" href={fullUrl} />
-        </Helmet>
-
+        {blog && (
+          <Helmet>
+            <title>{`${blog.title} | Un Café Contigo`}</title>
+            <meta name="description" content={blog.content.slice(0, 160)} />
+  
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content={blog.title} />
+            <meta property="og:description" content={blog.content.slice(0, 160)} />
+            <meta property="og:image" content={blog.bannerImage} />
+            <meta property="og:url" content={fullUrl} />
+            <meta property="og:site_name" content="Un Café Contigo" />
+  
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={blog.title} />
+            <meta name="twitter:description" content={blog.content.slice(0, 160)} />
+            <meta name="twitter:image" content={blog.bannerImage} />
+  
+            <meta property="article:published_time" content={blog.publicationDate} />
+            <meta property="article:author" content={blog.author} />
+            {blog.category && blog.category.map((cat, index) => (
+              <meta key={index} property="article:tag" content={cat} />
+            ))}
+  
+            <link rel="canonical" href={fullUrl} />
+          </Helmet>
+        )}
+  
         <Header />
         
         <main className="pt-32">
