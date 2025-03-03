@@ -1,5 +1,4 @@
-// src/components/core/spinning-text.jsx
-import React from 'react';
+import React, { useMemo, useLayoutEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 export const SpinningText = ({
@@ -19,19 +18,33 @@ export const SpinningText = ({
     animation: `spin${direction} 20s linear infinite`,
   };
 
+  // Guardamos los estilos en una variable para evitar re-inyecciones
+  const animationStyles = useMemo(() => `
+    @keyframes spinclockwise {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spincounterclockwise {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+  `, []);
+
+  // Insertamos los estilos globales solo una vez
+  useLayoutEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = animationStyles;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, [animationStyles]);
+
   return (
-    <div
-      className={twMerge('spinning-text', className)}
-      style={containerStyle}
-    >
+    <div className={twMerge('spinning-text', className)} style={containerStyle}>
       {characters.map((char, i) => {
         const angle = angleStep * i;
         const x = radius * Math.cos(angle);
         const y = radius * Math.sin(angle);
-        
-        // Ajustamos la rotación para que el texto se lea correctamente
         const textRotation = (angle * 180) / Math.PI + 90;
-
 
         return (
           <span
@@ -49,16 +62,6 @@ export const SpinningText = ({
           </span>
         );
       })}
-      <style jsx>{`
-        @keyframes spinclockwise {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
     </div>
   );
 };

@@ -167,6 +167,7 @@ const BlogDetail = () => {
                     src="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
                     alt={blog.author}
                     className="w-auto h-12"
+                    loading="lazy"
                   />
                   <div>
                     <p className="font-medium text-gray-900">{blog.author}</p>

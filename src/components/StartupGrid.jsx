@@ -77,6 +77,7 @@ const StartupGrid = () => {
                       <img
                         src={project.image}
                         alt={`Project ${project.id}`}
+                        loading="lazy"
                         className={`w-full h-auto transition-all duration-300 ${
                           hoveredId === project.id || window.innerWidth <= 768
                             ? ''
@@ -88,6 +89,7 @@ const StartupGrid = () => {
                     <img
                       src={project.image}
                       alt={`Project ${project.id}`}
+                      loading="lazy"
                       className={`w-full h-auto max-w-[200px] transition-all duration-300 ${
                         hoveredId === project.id || window.innerWidth <= 768
                           ? ''

@@ -77,6 +77,7 @@ const Community = () => {
                 src="https://res.cloudinary.com/dfgjenml4/image/upload/v1739070905/gvlgxk4xadewngyhnfov.png"
                 alt="Community Speaker"
                 className="w-full rounded-2xl shadow-lg"
+                loading="lazy"
               />
             </motion.div>
 
@@ -91,6 +92,7 @@ const Community = () => {
                     src={logo.src}
                     alt={logo.alt}
                     className={`${logo.size} w-auto object-contain`}
+                    loading="lazy"
                   />
                 </div>
               ))}

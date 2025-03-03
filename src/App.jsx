@@ -1,28 +1,23 @@
-import React, { useState, useEffect, useRef } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  UNSAFE_DataRouterStateContext,
-  UNSAFE_NavigationContext,
-} from "react-router-dom";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { HelmetProvider } from "react-helmet-async";
+import { BrowserRouter } from "react-router-dom";
 
-// Components
-import Home from "./pages/Home";
-import AboutMe from "./pages/AboutMe";
-import BlogLayout from "./pages/BlogLayout";
-import EventsLayout from "./pages/EventLayout";
-import EventDetail from "./components/events/EventDetail";
-import BlogDetail from "./components/blog/BlogDetail";
-import LoadingSpinner from "./components/LoadingSpinner";
+// 🛠️ Lazy Load para mejorar el rendimiento
+const Home = lazy(() => import("./pages/Home"));
+const AboutMe = lazy(() => import("./pages/AboutMe"));
+const BlogLayout = lazy(() => import("./pages/BlogLayout"));
+const BlogDetail = lazy(() => import("./components/blog/BlogDetail"));
+const EventsLayout = lazy(() => import("./pages/EventLayout"));
+const EventDetail = lazy(() => import("./components/events/EventDetail"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const LoadingSpinner = lazy(() => import("./components/LoadingSpinner"));
 
 // PrimeReact imports
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import NotFound from "./pages/NotFound";
 
 const imagesToPreload = [
   "https://res.cloudinary.com/dfgjenml4/image/upload/v1720311811/tip7xyfvup8bgtnvjopv.png",
@@ -38,12 +33,8 @@ const imagesToPreload = [
 function preloadImage(src) {
   return new Promise((resolve, reject) => {
     const img = new Image();
-    img.onload = function () {
-      resolve(img);
-    };
-    img.onerror = img.onabort = function () {
-      reject(src);
-    };
+    img.onload = () => resolve(img);
+    img.onerror = img.onabort = () => reject(src);
     img.src = src;
   });
 }
@@ -87,7 +78,9 @@ function App() {
         <div className="relative w-full h-full">
           {loading ? (
             <div className="relative">
-              <LoadingSpinner />
+              <Suspense fallback={<LoadingSpinner />}>
+                <LoadingSpinner />
+              </Suspense>
             </div>
           ) : (
             <CSSTransition
@@ -98,13 +91,13 @@ function App() {
               nodeRef={nodeRef}
             >
               <div ref={nodeRef} className="relative">
-                <Router
+                <BrowserRouter
                   future={{
                     v7_startTransition: true,
                     v7_relativeSplatPath: true,
                   }}
                 >
-                  <div className="relative">
+                  <Suspense fallback={<LoadingSpinner />}>
                     <Routes>
                       <Route path="/" element={<Home />} />
                       <Route path="/about" element={<AboutMe />} />
@@ -114,8 +107,8 @@ function App() {
                       <Route path="/events/:slug" element={<EventDetail />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
-                  </div>
-                </Router>
+                  </Suspense>
+                </BrowserRouter>
               </div>
             </CSSTransition>
           )}

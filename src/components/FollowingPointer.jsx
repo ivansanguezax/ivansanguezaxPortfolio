@@ -92,6 +92,7 @@ export const FollowPointer = ({
             src={icon}
             alt="Icon"
             className="w-6 h-6"
+            loading="lazy"
           />
         )}
       </motion.div>

@@ -60,6 +60,7 @@ const BlogBanner = () => {
               src="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
               alt="Relaxed character"
               className="w-40 md:w-48 h-auto object-contain"
+              loading="lazy"
             />
           </motion.div>
         </div>

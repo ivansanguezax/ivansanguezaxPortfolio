@@ -73,6 +73,7 @@ const EventCard = ({ event }) => {
                 src="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
                 alt={panelist.name}
                 className="w-auto h-10"
+                loading="lazy"
               />
               <div>
                 <p className="font-medium text-gray-900">{panelist.name}</p>
@@ -120,6 +121,7 @@ const EventCard = ({ event }) => {
           <img
             src={bgImage}
             alt={name}
+            loading="lazy"
             className="w-full h-full object-cover rounded-lg shadow-md"
             style={{ aspectRatio: '16/9' }}
             onError={(e) => {

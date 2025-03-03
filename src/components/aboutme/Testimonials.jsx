@@ -99,6 +99,7 @@ const Testimonials = () => {
                   <img
                     src={testimonial.src}
                     alt={testimonial.name}
+                    loading="lazy"
                     className="h-full w-full rounded-3xl object-cover object-center"
                   />
                 </motion.div>

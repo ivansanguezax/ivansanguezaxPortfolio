@@ -187,8 +187,9 @@ const Header = () => {
                   <Link to="/" className="flex-1 flex justify-center">
                     <img 
                       src="https://res.cloudinary.com/dfgjenml4/image/upload/v1739243926/xulj6rszfzxgfmykmbxq.png"
-                      alt="Logo"
+                      alt="Logo Ivan Sangueza"
                       className="h-8 w-auto object-contain"
+                      loading="lazy"
                     />
                   </Link>
                   
@@ -237,8 +238,9 @@ const Header = () => {
                 <Link to="/" className="flex-shrink-0">
                   <img 
                     src="https://res.cloudinary.com/dfgjenml4/image/upload/v1720371522/ct1tu7f3fmsyyuwfc7tg.png"
-                    alt="Logo"
+                    alt="Logo Ivan Sangueza"
                     className="h-12 w-auto object-contain"
+                    loading="lazy"
                   />
                 </Link>
 

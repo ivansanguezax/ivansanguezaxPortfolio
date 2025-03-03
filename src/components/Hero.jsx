@@ -83,11 +83,13 @@ const Hero = () => {
             title="Ivan Sangueza"
             icon="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
             className="aspect-[3/4] relative"
+            loading="lazy"
           >
             <img
               src="https://res.cloudinary.com/dfgjenml4/image/upload/v1739334211/zqqkj0q3ti8npzli0sjg.png"
-              alt="Ivan Sangueza"
+              alt="Ivan Sangueza Profile"
               className="w-full h-full object-cover rounded-lg transform hover:scale-105 transition duration-300 animate-[float_6s_ease-in-out_infinite]"
+              loading="lazy"
             />
           </FollowerPointerCard>
         </div>

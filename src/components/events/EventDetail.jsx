@@ -192,6 +192,7 @@ const EventDetail = () => {
                   src="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
                   alt={event.panelist.name}
                   className="w-auto h-12"
+                  loading="lazy"
                 />
                 <div>
                   <p className="font-medium text-gray-900">

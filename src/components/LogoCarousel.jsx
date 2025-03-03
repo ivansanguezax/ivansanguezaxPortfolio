@@ -23,6 +23,7 @@ const LogoCarousel = () => {
                 src={logo.src} 
                 alt={logo.alt} 
                 className="w-20 h-10 md:w-24 md:h-12 object-contain transition-all duration-300 filter grayscale group-hover:filter-none"
+                loading="lazy"
               />
             </motion.div>
           ))}

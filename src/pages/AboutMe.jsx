@@ -57,8 +57,9 @@ const AboutMe = () => {
             <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
               <img
                 src="https://res.cloudinary.com/dfgjenml4/image/upload/v1739823706/courses/pr0vvtpomybk2n7yt5ob.jpg"
-                alt="Iván Sangueza"
+                alt="Ivan Sangueza - Product Manager"
                 className="w-full h-full object-cover rounded-2xl shadow-lg animate-fadeIn"
+                loading="lazy"
               />
             </div>
             <div className="flex flex-col items-start justify-center space-y-6">
