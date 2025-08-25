@@ -81,12 +81,12 @@ const Hero = () => {
         <div className="w-full max-w-[250px]">
           <FollowerPointerCard
             title="Ivan Sangueza"
-            icon="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
+            icon="https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756088629/logoWTH_fta3at.png"
             className="aspect-[3/4] relative"
             loading="lazy"
           >
             <img
-              src="https://res.cloudinary.com/dfgjenml4/image/upload/v1739334211/zqqkj0q3ti8npzli0sjg.png"
+              src="https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756087562/Group_2_uajxqf.png"
               alt="Ivan Sangueza Profile"
               className="w-full h-full object-cover rounded-lg transform hover:scale-105 transition duration-300 animate-[float_6s_ease-in-out_infinite]"
               loading="lazy"

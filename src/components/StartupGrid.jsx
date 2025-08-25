@@ -3,25 +3,25 @@ import React, { useState, useEffect } from 'react';
 const projects = [
   {
     id: 1,
-    image: "https://res.cloudinary.com/dfgjenml4/image/upload/v1739065717/u62fzkyl8mtaumucvb7n.png",
-    url: "https://www.seiff.cl/",
-    hasWebsite: true
-  },
-  {
-    id: 2,
-    image: "https://res.cloudinary.com/dfgjenml4/image/upload/v1739065717/z5euv0mo6kvcs0b8djdc.png",
+    image: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756092036/logoFav_rq7vx2.png",
     url: "https://tufavorcito.com/",
     hasWebsite: true
   },
   {
+    id: 2,
+    image: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756092170/seiff_kmvcxj.png",
+    url: "",
+    hasWebsite: true
+  },
+  {
     id: 3,
-    image: "https://res.cloudinary.com/dfgjenml4/image/upload/v1739065717/ewyttkkn7lfkopujkavh.png",
+    image: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756092342/menti_kay5jk.png",
     url: "",
     hasWebsite: false
   },
   {
     id: 4,
-    image: "https://res.cloudinary.com/dfgjenml4/image/upload/v1739065881/tby9f7eyl4jviquzaddk.png",
+    image: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756092342/bucle_ybisio.png",
     url: "https://bucle.vc/",
     hasWebsite: true
   }

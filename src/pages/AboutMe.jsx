@@ -56,7 +56,7 @@ const AboutMe = () => {
           >
             <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
               <img
-                src="https://res.cloudinary.com/dfgjenml4/image/upload/v1739823706/courses/pr0vvtpomybk2n7yt5ob.jpg"
+                src="https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756092870/2_diqk2z.jpg"
                 alt="Ivan Sangueza - Product Manager"
                 className="w-full h-full object-cover rounded-2xl shadow-lg animate-fadeIn"
                 loading="lazy"
@@ -69,7 +69,7 @@ const AboutMe = () => {
               <div className="w-full md:w-64">
                 <HoverBorderGradient
                   as="a"
-                  href="https://calendly.com/ivansanguezax/mentoria"
+                  href="https://calendar.app.google/9qnqLsgxZH6Zs5N87"
                   target="_blank"
                   rel="noopener noreferrer"
                   containerClassName="rounded-full w-full"

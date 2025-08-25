@@ -15,7 +15,7 @@ const Home = () => {
         <Hero />
         <StartupGrid />
         <Community />
-        <ProjectsCarousel />
+        {/* <ProjectsCarousel /> */}
         <BlogBanner />
       </main>
       <Footer />

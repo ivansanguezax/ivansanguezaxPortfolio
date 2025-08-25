@@ -3,7 +3,7 @@ import { SpinningText } from './core/spinning-text';
 
 const LoadingSpinner = () => {
   const text = 'Ivan Sangueza • Ivan Sangueza • Ivan Sangueza • Ivan Sangueza • ';
-  const imageSrc = "https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png";
+  const imageSrc = "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756088629/logoWTH_fta3at.png";
   
   // Estado para manejar la carga de la imagen
   const [imageError, setImageError] = useState(false);

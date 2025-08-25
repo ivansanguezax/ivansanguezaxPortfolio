@@ -57,7 +57,7 @@ const BlogBanner = () => {
             className="flex-shrink-0"
           >
             <img 
-              src="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
+              src="https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756092992/coffe_pkv7pd.png"
               alt="Relaxed character"
               className="w-40 md:w-48 h-auto object-contain"
               loading="lazy"

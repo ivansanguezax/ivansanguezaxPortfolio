@@ -44,37 +44,36 @@ const Community = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
           
-          {/* Left Content */}
-          <motion.div 
-            variants={itemVariants}
-            className="flex-1 space-y-6"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Empowering ideas and people to build a better future together.
-            </h2>
-            <p className="text-lg text-gray-600">
-              Every talk is an opportunity to share, connect, and inspire action. It's about creating real impact through ideas and collaboration.
-            </p>
-            <Link to="/events">
-              <motion.button
+                <motion.div 
                 variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-black text-white px-8 py-4 mt-5 rounded-lg font-semibold hover:bg-gray-800 transition-colors shadow-lg"
-              >
-                See My Next Talk →
-              </motion.button>
-            </Link>
-          </motion.div>
+                className="flex-1 space-y-6"
+                >
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                  Empowering ideas and people to build a better future together.
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Every blog is an opportunity to share, connect, and inspire action. It's about creating real impact through ideas and collaboration.
+                </p>
+                <Link to="/blog">
+                  <motion.button
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-black text-white px-8 py-4 mt-5 rounded-lg font-semibold hover:bg-gray-800 transition-colors shadow-lg"
+                  >
+                  See My Latest Blog →
+                  </motion.button>
+                </Link>
+                </motion.div>
 
-          {/* Right Content */}
+                {/* Right Content */}
           <motion.div 
             variants={itemVariants}
             className="flex-1 space-y-6"
           >
             <motion.div variants={itemVariants} className="relative">
               <img 
-                src="https://res.cloudinary.com/dfgjenml4/image/upload/v1739070905/gvlgxk4xadewngyhnfov.png"
+                src="https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756092870/1_ktea10.jpg"
                 alt="Community Speaker"
                 className="w-full rounded-2xl shadow-lg"
                 loading="lazy"
@@ -86,7 +85,7 @@ const Community = () => {
               variants={itemVariants}
               className="flex flex-row items-center justify-between w-full px-2 sm:px-4"
             >
-              {logos.map((logo) => (
+              {/* {logos.map((logo) => (
                 <div key={logo.alt} className="flex items-center justify-center px-1 sm:px-2">
                   <img
                     src={logo.src}
@@ -95,7 +94,7 @@ const Community = () => {
                     loading="lazy"
                   />
                 </div>
-              ))}
+              ))} */}
             </motion.div>
           </motion.div>
         </div>

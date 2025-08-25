@@ -5,7 +5,7 @@ import {
   motion,
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import { HoverBorderGradient } from '../hover-border-gradient';
+import { HoverBorderGradient } from "../hover-border-gradient";
 
 export const Timeline = () => {
   const ref = useRef(null);
@@ -21,8 +21,8 @@ export const Timeline = () => {
     };
 
     updateHeight();
-    window.addEventListener('resize', updateHeight);
-    return () => window.removeEventListener('resize', updateHeight);
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
   }, [ref]);
 
   const { scrollYProgress } = useScroll({
@@ -35,30 +35,73 @@ export const Timeline = () => {
 
   const experienceData = [
     {
-      title: "Sept 2024 - Present",
+      title: "March 2025 - Present",
+      subtitle: "Chief Executive Officer (CEO) & Founder | Favorcito",
+      description:
+        "Marketplace that connects verified students with people and businesses for hourly tasks.",
+      location: "Bolivia – La Paz (LATAM expansion)",
+      tags: [
+        "Leadership",
+        "Product",
+        "Growth",
+        "Firebase",
+        "Flutter",
+        "React",
+        "Airtable",
+        "Mixpanel",
+        "KYC",
+        "Escrow",
+        "n8n",
+        "Make",
+      ],
+      content:
+        "As CEO, I lead vision, product, and growth at Favorcito: an ecosystem that includes B2C (on-demand Favorcitos), B2B (Favorcito Business with credit packs by the hour), and Favorcito ID (verification + benefits). We built the matching engine based on skills+distance+reputation, advance payments with escrow, and SLAs under 4 hours. Between April and August 2025, we achieved 1,700+ B2C favors, 25 B2B deals, and over US$6.5K in combined GMV, with CAC ≈ US$6.30 and LTV ≈ US$8.18. I define OKRs, roadmap prioritization, acquisition and retention funnels, and product metrics with Mixpanel. Currently raising US$30–50K to scale into Chile, Peru, and Ecuador..",
+      link: {
+        url: "https://tufavorcito.com",
+        text: "Visit Favorcito",
+        icon: "🚀",
+      },
+    },
+    {
+      title: "Sept 2024 - March 2025",
       subtitle: "Chief Technology Officer & Founder | Seiff",
       description: "Secure checkout for buying and selling used cars.",
       location: "Chile – Metropolitana de Santiago",
-      tags: ["Leadership", "LangChain", "FastAPI", "React", "Flutter", "Mixpanel", "n8n"],
-      content: "As CTO at Seiff, a startup spun out from Güil Mobility Ventures and the Kauffman Group where I continued my work after Güil, also acted as Product Manager by defining product roadmaps, managing backlog, and leading product growth to align business and technical goals. Built an AI-powered payment platform with CRM automation, data pipelines, and real-time tracking to enhance conversion rates. Raised $100K in pre-seed funding at a $2M valuation, ensuring KPI-driven financial management and scalable growth.",
-      link: {
-        url: "https://www.seiff.cl/",
-        text: "Visit Seiff",
-        icon: "🚀"
-      }
+      tags: [
+        "Leadership",
+        "LangChain",
+        "FastAPI",
+        "React",
+        "Flutter",
+        "Mixpanel",
+        "n8n",
+      ],
+      content:
+        "As CTO at Seiff, a startup spun out from Güil Mobility Ventures and the Kauffman Group where I continued my work after Güil, also acted as Product Manager by defining product roadmaps, managing backlog, and leading product growth to align business and technical goals. Built an AI-powered payment platform with CRM automation, data pipelines, and real-time tracking to enhance conversion rates. Raised $100K in pre-seed funding at a $2M valuation, ensuring KPI-driven financial management and scalable growth.",
+      
     },
     {
       title: "Jan 2024 - Sept 2024",
-      subtitle: "Senior Frontend Developer & Growth Engineer | Güil Mobility Ventures",
-      description: "A venture builder that creates mobility startups from scratch",
+      subtitle:
+        "Senior Frontend Developer & Growth Engineer | Güil Mobility Ventures",
+      description:
+        "A venture builder that creates mobility startups from scratch",
       location: "Chile – Metropolitana de Santiago",
-      tags: ["React", "Next.js", "Vue", "Figma", "Google Analytics", "Mixpanel"],
-      content: "Led engineering and growth efforts for multiple startups at Güil, acting as Tech Lead while building and optimizing data-driven growth funnels that improved conversion rates and retention. Delivered measurable growth improvements within 9 months by optimizing funnels and implementing data-driven strategies, reducing drop-off by 15%.",
+      tags: [
+        "React",
+        "Next.js",
+        "Vue",
+        "Figma",
+        "Google Analytics",
+        "Mixpanel",
+      ],
+      content:
+        "Led engineering and growth efforts for multiple startups at Güil, acting as Tech Lead while building and optimizing data-driven growth funnels that improved conversion rates and retention. Delivered measurable growth improvements within 9 months by optimizing funnels and implementing data-driven strategies, reducing drop-off by 15%.",
       link: {
         url: "https://guilventures.com/es",
         text: "View Company",
-        icon: "💡"
-      }
+        icon: "💡",
+      },
     },
     {
       title: "Dec 2021 - Dec 2023",
@@ -66,32 +109,34 @@ export const Timeline = () => {
       description: "The platform that makes learning online fun for kids",
       location: "Bolivia – La Paz",
       tags: ["Leadership", "Technical Expertise", "React", "Zapier"],
-      content: "As CTO at Menti Academy, spearheaded the growth and technical development of an edtech platform, scaling it to 5,000+ students. Led product strategy through well-defined roadmaps, feature prioritization, and the integration of SEO, automation, and data-driven insights to enhance user engagement and retention."
-    }
+      content:
+        "As CTO at Menti Academy, spearheaded the growth and technical development of an edtech platform, scaling it to 5,000+ students. Led product strategy through well-defined roadmaps, feature prioritization, and the integration of SEO, automation, and data-driven insights to enhance user engagement and retention.",
+    },
   ];
 
   return (
-    <motion.div 
+    <motion.div
       className="w-full bg-gray-100 font-sans md:px-10 relative"
       ref={containerRef}
-      style={{ position: 'relative' }}
+      style={{ position: "relative" }}
     >
       <motion.div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-lg md:text-4xl mb-4 text-black font-bold"
           >
             My Journey
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-neutral-700 text-sm md:text-base max-w-2xl"
           >
-            Here's a timeline of my professional experience and achievements in product management and technology leadership.
+            Here's a timeline of my professional experience and achievements in
+            product management and technology leadership.
           </motion.p>
         </div>
 
@@ -124,12 +169,13 @@ export const Timeline = () => {
                 <p className="text-gray-600 text-sm italic mb-2">
                   {item.description}
                 </p>
-                <p className="text-gray-600 text-sm mb-4">
-                  {item.location}
-                </p>
+                <p className="text-gray-600 text-sm mb-4">{item.location}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {item.tags.map((tag, tagIndex) => (
-                    <span key={tagIndex} className="text-sm text-gray-500 bg-gray-50 px-3 py-1 rounded-full">
+                    <span
+                      key={tagIndex}
+                      className="text-sm text-gray-500 bg-gray-50 px-3 py-1 rounded-full"
+                    >
                       {tag}
                     </span>
                   ))}
@@ -160,7 +206,7 @@ export const Timeline = () => {
         <motion.div
           style={{
             height: height + "px",
-            position: 'absolute'
+            position: "absolute",
           }}
           className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-blue-600 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
         >
