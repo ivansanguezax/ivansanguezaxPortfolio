@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const NotionRenderer = ({ data }) => {
   const isImageUrl = (str) => {
@@ -6,17 +6,30 @@ const NotionRenderer = ({ data }) => {
            str.match(/^https?:\/\/.*\.(jpg|jpeg|png|gif|webp)$/i);
   };
 
-  const renderImage = (src) => (
-    <div className="flex justify-center my-8">
-      <div className="relative w-full max-w-2xl">
-        <img 
-          src={src} 
-          alt="Content" 
-          className="rounded-lg shadow-md w-full h-auto object-cover"
-          loading="lazy"
-        />
+  const ImageWithErrorHandling = ({ src }) => {
+    const [hasError, setHasError] = useState(false);
+
+    if (hasError) {
+      return null;
+    }
+
+    return (
+      <div className="flex justify-center my-8">
+        <div className="relative w-full max-w-2xl">
+          <img 
+            src={src} 
+            alt="Content" 
+            className="rounded-lg shadow-md w-full h-auto object-cover"
+            loading="lazy"
+            onError={() => setHasError(true)}
+          />
+        </div>
       </div>
-    </div>
+    );
+  };
+
+  const renderImage = (src) => (
+    <ImageWithErrorHandling key={src} src={src} />
   );
 
   const renderContent = (contents) => {

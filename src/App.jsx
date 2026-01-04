@@ -51,7 +51,7 @@ function App() {
       return;
     }
 
-    const minLoadingTime = new Promise((resolve) => setTimeout(resolve, 2000));
+    const minLoadingTime = new Promise((resolve) => setTimeout(resolve, 3000));
 
     const loadImages = async () => {
       try {
