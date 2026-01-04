@@ -119,7 +119,7 @@ const BlogCard = ({ blog }) => {
               </p>
               <button
                 onClick={handleReadMore}
-                className="mt-auto w-full rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-2.5 text-white font-medium shadow-lg transition-all duration-300 hover:from-blue-600 hover:to-blue-700 hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                className="mt-auto w-full rounded-lg border-2 border-white bg-white/10 backdrop-blur-sm px-4 py-2.5 text-white font-medium transition-all duration-300 hover:bg-white/20 hover:border-white/80 active:scale-[0.98]"
                 type="button"
               >
                 Read Full Article →

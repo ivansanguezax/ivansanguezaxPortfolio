@@ -9,8 +9,7 @@ const Home = lazy(() => import("./pages/Home"));
 const AboutMe = lazy(() => import("./pages/AboutMe"));
 const BlogLayout = lazy(() => import("./pages/BlogLayout"));
 const BlogDetail = lazy(() => import("./components/blog/BlogDetail"));
-const EventsLayout = lazy(() => import("./pages/EventLayout"));
-const EventDetail = lazy(() => import("./components/events/EventDetail"));
+const Startups = lazy(() => import("./pages/Startups"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const LoadingSpinner = lazy(() => import("./components/LoadingSpinner"));
 
@@ -103,8 +102,7 @@ function App() {
                       <Route path="/about" element={<AboutMe />} />
                       <Route path="/blog" element={<BlogLayout />} />
                       <Route path="/blog/:slug" element={<BlogDetail />} />
-                      <Route path="/events" element={<EventsLayout />} />
-                      <Route path="/events/:slug" element={<EventDetail />} />
+                      <Route path="/startups" element={<Startups />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </Suspense>

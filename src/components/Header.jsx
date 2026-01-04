@@ -106,10 +106,10 @@ const Header = () => {
       comingSoon: false,
     },
     {
-      id: "talks",
-      name: "Talks",
-      path: "/events",
-      icon: "🎤",
+      id: "startups",
+      name: "Startups",
+      path: "/startups",
+      icon: "🚀",
       comingSoon: false,
     },
   ];
@@ -119,6 +119,9 @@ const Header = () => {
       return (
         location.pathname === path || location.pathname.startsWith(`${path}/`)
       );
+    }
+    if (path === "/startups") {
+      return location.pathname === path || location.pathname.startsWith(`${path}/`);
     }
     return location.pathname === path;
   };
@@ -206,7 +209,7 @@ const Header = () => {
         }`}
       >
         <div
-          className={`container mx-auto px-4 sm:px-6 lg:px-10 ${
+          className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 ${
             isScrolled ? "max-w-3xl" : ""
           }`}
         >

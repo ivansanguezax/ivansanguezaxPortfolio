@@ -40,8 +40,8 @@ const StartupGrid = () => {
   }, []);
 
   return (
-    <div className="w-full bg-[#F5F5F0] px-10 py-16 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <div className="w-full bg-[#F5F5F0] py-16 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
           {/* Title Section with slide-in animation */}
           <div className={`md:w-1/3 mb-8 md:mb-0 text-center md:text-left transform transition-all duration-1000 ease-out

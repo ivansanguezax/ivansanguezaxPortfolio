@@ -10,7 +10,7 @@ const NotFound = () => {
       {/* Fondo negro fijo en la parte inferior */}
       <div className="fixed bottom-0 left-0 w-full h-[25vh] bg-[#0C0E10]" />
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative h-[calc(100vh-80px)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative h-[calc(100vh-80px)]">
         <div className="flex flex-col md:flex-row justify-around items-center h-full">
           {/* Left Section */}
           <motion.div 

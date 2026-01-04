@@ -60,7 +60,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 py-20">
+    <div className="max-w-7xl mx-auto antialiased font-sans px-4 sm:px-6 lg:px-10 py-20">
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-20">
         <div>
           <div className="relative h-80 w-full">

@@ -1,45 +1,40 @@
 import React from "react";
-import { Vortex } from "../core/Vortex";
-import { Sparkles } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { NoiseBackground } from "../ui/noise-background";
 
 const CTASection = () => {
-  const navigate = useNavigate();
-
   const handleClick = () => {
-    navigate("/events");
+    window.open("https://calendar.app.google/9qnqLsgxZH6Zs5N87", "_blank", "noopener,noreferrer");
   };
 
   return (
-    <div className="w-[calc(100%-4rem)] mx-auto rounded-md h-[30rem] overflow-hidden bg-black">
-      <Vortex
-        backgroundColor="#000000"
-        baseHue={280}           // Morado base
-        rangeHue={60}           // Rango para variar entre morado y azul
-        particleCount={700}     // Más partículas
-        baseSpeed={0.1}         // Velocidad base más lenta
-        rangeSpeed={0.8}        // Rango de velocidad menor
-        baseRadius={1.2}        // Radio base más grande
-        rangeRadius={1.5}       // Más variación en el tamaño
-        rangeY={150}            // Mayor rango vertical
-        className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
-      >
-        <h2 className="text-white text-2xl md:text-6xl font-bold text-center leading-tight tracking-tight">
-          Inspiring Tech Leaders & Innovators
-        </h2>
-        <p className="text-white/90 text-sm md:text-2xl max-w-2xl mt-6 text-center leading-relaxed">
-          I share insights on product management, AI, and growth strategies that drive impact. Ready to level up your tech journey? Let’s build the future together.
-        </p>
-        <div className="flex items-center gap-4 mt-8">
-          <button 
-            className="group px-6 py-3 bg-blue-600 hover:bg-blue-500 transition-all duration-300 rounded-lg text-white font-medium shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
-            onClick={handleClick}
-          >
-            <Sparkles className="w-5 h-5 group-hover:animate-pulse" />
-            <span>Book Me as a Speaker</span>
-          </button>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+      <div className="w-full rounded-md h-[30rem] flex items-center justify-center">
+        <div className="cta-section flex flex-col items-center justify-center px-4 md:px-10 py-4 w-full h-full">
+          <h2 className="text-black text-2xl md:text-6xl font-bold text-center leading-tight tracking-tight">
+            Inspiring Tech Leaders & Innovators
+          </h2>
+          <p className="text-black text-sm md:text-2xl max-w-2xl mt-6 text-center leading-relaxed">
+            I share insights on product management, AI, and growth strategies that drive impact. Ready to level up your tech journey? Let's build the future together.
+          </p>
+          <div className="flex items-center gap-4 mt-8">
+            <NoiseBackground
+              containerClassName="w-fit p-2 rounded-full mx-auto"
+              gradientColors={[
+                "rgb(255, 100, 150)",
+                "rgb(100, 150, 255)",
+                "rgb(255, 200, 100)",
+              ]}
+            >
+              <button 
+                className="h-full w-full cursor-pointer rounded-full bg-gradient-to-r from-neutral-100 via-neutral-100 to-white px-4 py-2 text-black shadow-[0px_2px_0px_0px_rgba(250,250,250,1)_inset,0px_0.5px_1px_0px_rgba(163,163,163,1)] transition-all duration-100 active:scale-[0.98] text-sm md:text-base font-normal"
+                onClick={handleClick}
+              >
+                Book Me as a Speaker &rarr;
+              </button>
+            </NoiseBackground>
+          </div>
         </div>
-      </Vortex>
+      </div>
     </div>
   );
 };

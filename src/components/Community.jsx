@@ -41,7 +41,7 @@ const Community = () => {
       variants={containerVariants}
       className="w-full bg-white py-12 md:py-16"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
           
                 <motion.div 
@@ -52,16 +52,16 @@ const Community = () => {
                   Empowering ideas and people to build a better future together.
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Every blog is an opportunity to share, connect, and inspire action. It's about creating real impact through ideas and collaboration.
+                  Product Manager with a strong technical background, leading cross-functional teams across LATAM, U.S., and Europe.
                 </p>
-                <Link to="/blog">
+                <Link to="/about">
                   <motion.button
                   variants={itemVariants}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-black text-white px-8 py-4 mt-5 rounded-lg font-semibold hover:bg-gray-800 transition-colors shadow-lg"
                   >
-                  See My Latest Blog →
+                  View My Experience →
                   </motion.button>
                 </Link>
                 </motion.div>

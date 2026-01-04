@@ -12,7 +12,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center px-5 md:px-40 md:py-8 md:gap-10 min-h-screen pt-24">
+    <div className="flex flex-col md:flex-row items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 md:py-8 md:gap-10 min-h-screen pt-24">
       {/* Left Section */}
       <div className="w-full md:w-4/6 text-gray-800 mb-12 md:mb-0 flex flex-col items-center md:items-start">
         <h1 className="text-2xl font-light animate-[fadeIn_2s_ease-out] text-center md:text-left w-full mb-5">

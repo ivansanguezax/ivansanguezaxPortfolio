@@ -147,7 +147,7 @@ const BlogDetail = () => {
         <Header />
         
         <main className="pt-32">
-          <div className="max-w-4xl mx-auto px-4">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10">
             <button
               onClick={() => navigate('/blog')}
               className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-6"
@@ -164,7 +164,7 @@ const BlogDetail = () => {
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-3">
                   <img
-                    src="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
+                    src="https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756088629/logoWTH_fta3at.png"
                     alt={blog.author}
                     className="w-auto h-12"
                     loading="lazy"

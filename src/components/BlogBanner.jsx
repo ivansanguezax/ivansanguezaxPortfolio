@@ -6,7 +6,7 @@ import { HoverBorderGradient } from "./hover-border-gradient";
 
 const BlogBanner = () => {
   return (
-    <div className="w-full max-w-6xl mx-auto mt-10 p-2 sm:p-4">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 mt-10">
       <BackgroundGradient className="rounded-2xl bg-white">
         <div className="flex flex-col md:flex-row items-center p-6 md:p-8 gap-6 md:gap-12">
           <div className="flex-1 text-center md:text-left space-y-4 w-full">
@@ -57,9 +57,9 @@ const BlogBanner = () => {
             className="flex-shrink-0"
           >
             <img 
-              src="https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756092992/coffe_pkv7pd.png"
+              src="https://res.cloudinary.com/dg1x0cwdc/image/upload/v1767479039/Coffee_csmrej.png"
               alt="Relaxed character"
-              className="w-40 md:w-48 h-auto object-contain"
+              className="w-50 md:w-48 h-auto object-contain"
               loading="lazy"
             />
           </motion.div>

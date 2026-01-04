@@ -5,7 +5,7 @@ import LogoCarousel from './LogoCarousel';
 const Footer = () => {
   return (
     <footer id="footer" className="mt-auto py-6 md:py-8">
-      <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex justify-between items-center">
         <div className="text-xs md:text-sm text-gray-600">
           Made with ❤️ by Ivan Sangueza
         </div>

@@ -1,6 +1,9 @@
 import { Chip } from 'primereact/chip';
+import { useNavigate } from 'react-router-dom';
 
 const CarouselItem = ({ blog }) => {
+  const navigate = useNavigate();
+  
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('es-ES', {
       day: 'numeric',
@@ -29,7 +32,7 @@ const CarouselItem = ({ blog }) => {
       />
 
       {/* Contenido */}
-      <div className="relative h-full container mx-auto px-4">
+      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <div className="flex flex-col justify-center h-full md:w-2/3 space-y-4">
           {/* Tags */}
           <div className="flex gap-2">
@@ -55,7 +58,7 @@ const CarouselItem = ({ blog }) => {
           {/* Autor e información */}
           <div className="flex items-center gap-3 mt-4">
             <img
-              src="https://res.cloudinary.com/dfgjenml4/image/upload/v1721000470/ujz3ew4m573pawhcamhi.png"
+              src="https://res.cloudinary.com/dg1x0cwdc/image/upload/v1756088629/logoWTH_fta3at.png"
               alt="Autor"
               className="w-auto h-12 "
               loading="lazy"

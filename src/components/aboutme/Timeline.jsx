@@ -116,12 +116,12 @@ export const Timeline = () => {
 
   return (
     <motion.div
-      className="w-full bg-gray-100 font-sans md:px-10 relative"
+      className="w-full bg-gray-100 font-sans relative"
       ref={containerRef}
       style={{ position: "relative" }}
     >
-      <motion.div ref={ref} className="relative max-w-7xl mx-auto pb-20">
-        <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+      <motion.div ref={ref} className="relative max-w-7xl mx-auto pb-20 px-4 sm:px-6 lg:px-10">
+        <div className="py-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
